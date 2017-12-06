@@ -1,0 +1,41 @@
+{
+  "name": "botyo-bundle-persistence",
+  "version": "2.0.0-alpha.1",
+  "description": "Bundle of components for Botyo related to the persistence of messages",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf build/",
+    "build": "tsc -p .",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivkos/botyo-bundle-persistence.git"
+  },
+  "author": {
+    "name": "Ivaylo Stoyanov",
+    "email": "me@ivkos.com",
+    "url": "https://github.com/ivkos"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ivkos/botyo-bundle-persistence/issues"
+  },
+  "homepage": "https://github.com/ivkos/botyo-bundle-persistence#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "botyo-api": "^2.0.0-alpha.11",
+    "inversify": "^4.6.0",
+    "mongodb": "^2.2.33"
+  },
+  "devDependencies": {
+    "@types/async": "^2.0.45",
+    "@types/mongodb": "^2.2.16",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.6.2"
+  },
+  "engines": {
+    "node": ">=6.5.0"
+  }
+}
