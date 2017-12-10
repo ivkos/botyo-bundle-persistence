@@ -1,6 +1,6 @@
 {
   "name": "botyo-bundle-persistence",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Bundle of components for Botyo related to the persistence of messages",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/ivkos/botyo-bundle-persistence#readme",
   "dependencies": {
     "async": "^2.6.0",
-    "botyo-api": "^2.0.0-alpha.11",
+    "botyo-api": "^2.0.0-alpha.14",
     "inversify": "^4.6.0",
     "mongodb": "^2.2.33"
   },
