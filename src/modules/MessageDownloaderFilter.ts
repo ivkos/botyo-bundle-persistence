@@ -1,10 +1,9 @@
-import { FilterModule, Message, MongoDb } from "botyo-api";
-import { Db } from "mongodb";
+import { AbstractFilterModule, Message, MongoDb } from "botyo-api";
 import { inject } from "inversify";
 
-export class MessageDownloaderFilter extends FilterModule
+export class MessageDownloaderFilter extends AbstractFilterModule
 {
-    constructor(@inject(MongoDb) private readonly db: Db)
+    constructor(@inject(MongoDb.SYMBOL) private readonly db: MongoDb)
     {
         super();
     }

@@ -1,10 +1,18 @@
-import { ChatApi, ChatThreadUtils, FacebookId, Message, MongoDb, ScheduledTaskModule } from "botyo-api";
+import {
+    AbstractScheduledTaskModule,
+    ChatApi,
+    ChatThreadUtils,
+    Constants,
+    FacebookId,
+    Message,
+    MongoDb
+} from "botyo-api";
 import { inject } from "inversify";
-import { Collection, Db } from "mongodb";
+import { Collection } from "mongodb";
 import { LoggerInstance } from "winston";
 import * as async from "async";
 
-export class ChatThreadHistoryDownloaderScheduledTask extends ScheduledTaskModule
+export class ChatThreadHistoryDownloaderScheduledTask extends AbstractScheduledTaskModule
 {
     private static readonly UNIQUE_INDEX_MESSAGE_ID = "messageID";
 
@@ -13,7 +21,7 @@ export class ChatThreadHistoryDownloaderScheduledTask extends ScheduledTaskModul
     private readonly chatThreadUtils: ChatThreadUtils;
     private readonly maxMessagesPerRequest: number;
 
-    constructor(@inject(MongoDb) private readonly db: Db)
+    constructor(@inject(MongoDb.SYMBOL) private readonly db: MongoDb)
     {
         super();
 
@@ -42,14 +50,14 @@ export class ChatThreadHistoryDownloaderScheduledTask extends ScheduledTaskModul
     {
         return this.getRuntime()
             .getConfiguration()
-            .getOrElse(ScheduledTaskModule.CONFIG_KEY_SCHEDULE, 3 * 60 * 60 * 1000);
+            .getOrElse(Constants.CONFIG_KEY_SCHEDULE, 3 * 60 * 60 * 1000);
     }
 
     shouldExecuteOnStart(): boolean
     {
         return this.getRuntime()
             .getConfiguration()
-            .getOrElse(ScheduledTaskModule.CONFIG_KEY_EXECUTE_ON_START, true);
+            .getOrElse(Constants.CONFIG_KEY_EXECUTE_ON_START, true);
     }
 
     private async downloadMessagesByThreadId(threadId: FacebookId)
